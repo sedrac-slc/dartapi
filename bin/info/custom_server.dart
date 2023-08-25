@@ -4,9 +4,9 @@ import 'package:shelf/shelf_io.dart' as shelf_io;
 class CustomServer {
   Future<void> init(
       {required Handler handler,
-      required String address,
-      required int port}) async {
-    await shelf_io.serve(handler, 'localhost', 8081);
+      String address = "localhost",
+      int port = 8081}) async {
+    await shelf_io.serve(handler, address, port);
     print("Link https://$address:$port");
   }
 }
