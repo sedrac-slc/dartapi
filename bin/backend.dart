@@ -3,6 +3,7 @@ import 'package:shelf/shelf.dart';
 import 'api/new_api.dart';
 import 'api/login_api.dart';
 import 'info/custom_server.dart';
+import 'services/news_service.dart';
 import 'utils/custom_env.dart';
 
 void main(List<String> arguments) async {
