@@ -1,8 +1,8 @@
 import 'package:shelf/shelf.dart';
 import 'api/new_api.dart';
 import 'api/login_api.dart';
-import 'info/custom_server.dart';
-import 'info/json_middleware.dart';
+import 'infra/custom_server.dart';
+import 'middleware/json_middleware.dart';
 
 void main(List<String> arguments) async {
   var cascadeHandler =
