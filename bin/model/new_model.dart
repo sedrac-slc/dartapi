@@ -8,7 +8,7 @@ class New {
   New(this.id, this.title, this.description, this.createdAt, this.updatedAt);
 
   factory New.fromJson(Map map) {
-    return New(map['id'], map['title'], map['description'], DateTime.now(),
+    return New(map['id'] ?? 1, map['title'], map['description'], DateTime.now(),
         map['updatedAt'] != null ? DateTime.parse(map['updatedAt']) : null);
   }
 

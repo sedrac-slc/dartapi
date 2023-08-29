@@ -17,13 +17,14 @@ class NewApi {
       List<New> list = _newService.findAll();
       List<Map> maps = list.map((e) => e.toJson()).toList();
       var jsonResponse = jsonEncode(maps);
-      return Response.ok(jsonResponse,
-          headers: {"content-type": "application/json"});
+      return Response.ok(jsonResponse);
     });
 
     router.post("$context", (Request req) async {
       String body = await req.readAsString();
-      _newService.save(New.fromJson(jsonDecode(body)));
+      Map maps = jsonDecode(body);
+      maps['id'] = _newService.findAll().length + 1;
+      _newService.save(New.fromJson(maps));
       return Response(200, body: 'STORE');
     });
 
