@@ -1,3 +1,4 @@
+import '../utils/custom_env.dart';
 import 'jwt_abst.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 
@@ -9,13 +10,24 @@ class SecurityServiceJWT extends SecurityJWT<JWT> {
       'userID': userID,
       'roles': ['admin', 'user']
     });
-    String key = "1983443232idj@djeroKLASMEi_a3ddna4aq";
+    String key = await CustomEnv.get(key: "jwt_token");
     String token = jwt.sign(SecretKey(key));
     return token;
   }
 
   @override
-  JWT? validateToken(String token) {
-    throw UnimplementedError();
+  Future<JWT?> validateToken(String token) async {
+    String key = await CustomEnv.get(key: "jwt_token");
+    try {
+      return JWT.verify(token, SecretKey(key));
+    } on JWTInvalidException {
+      return null;
+    } on JWTExpiredException {
+      return null;
+    } on JWTNotActiveException {
+      return null;
+    } catch (e) {
+      return null;
+    }
   }
 }
