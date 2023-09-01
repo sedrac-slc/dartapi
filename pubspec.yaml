@@ -14,6 +14,5 @@ dev_dependencies:
   test: ^1.21.0
 dependencies:
   dart_jsonwebtoken: ^2.11.0
-  envied: ^0.3.0+3
   shelf: ^1.4.1
   shelf_router: ^1.1.4
